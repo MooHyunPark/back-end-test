@@ -14,9 +14,15 @@ import lombok.Setter;
 @Entity
 @Setter
 public class User {
+
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
+
+    public void update(String name) {
+        this.name = name;
+    }
 }
 
 

@@ -1,11 +1,8 @@
 package co.kr.metacoding.backendtest.user;
 
-import co.kr.metacoding.backendtest._core.util.Resp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @CrossOrigin
@@ -26,14 +23,19 @@ public class UserController {
 //    }
 
     @GetMapping("/users/{id}")
-    public UserResponse.UserDetailDTO selectUser(@PathVariable("id") String id) {
-        System.out.println(id);
+    public UserResponse.UserDetailDTO selectUser(@PathVariable("id") Integer id) {
         return userService.selectUser(id);
     }
 
     @PostMapping("/users")
     public UserResponse.SaveUserIdDTO saveUser(@RequestBody User user, Errors errors) {
         return userService.saveUser(user);
+    }
+
+    @PutMapping("/users/{id}")
+    public UserResponse.UpdateUserDTO update(@RequestBody User user, Errors errors, @PathVariable("id") Integer id) {
+
+        return userService.updateUser(user, id);
     }
 
 }

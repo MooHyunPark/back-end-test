@@ -14,7 +14,7 @@ public class UserRepository {
     private final EntityManager em;
 
 
-    public Optional<User> selectUser(String id) {
+    public Optional<User> selectUser(Integer id) {
             // null 처리를 하기 위해 Optional 처리를 하였음
         return Optional.ofNullable(em.find(User.class, id));
     }
