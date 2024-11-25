@@ -17,7 +17,7 @@ public class MyControllerAdvice {
     @ExceptionHandler(Exception400.class)
     public ResponseEntity<?> err400(Exception400 e) {
         Map<String, String> response = new HashMap<>();
-        response.put("reason", "잘못된 요청입니다.");
+        response.put("reason", "body 값이 잘못되었다");
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 

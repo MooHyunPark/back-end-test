@@ -34,7 +34,7 @@ public class MyAspect {
                 // 에러가 발생하면 메세지와 함께 예외 throw
                 // 해당 예제에서는 name 값을 "" 빈문자열로 주게 되면 400 예외를 발생시킴
                 if(errors.hasErrors()) {
-                    String errMsg = errors.getFieldErrors().get(0).getField() +" : "+ errors.getFieldErrors().get(0).getDefaultMessage();
+                    String errMsg = errors.getFieldErrors().get(0).getField() + " : " + errors.getFieldErrors().get(0).getDefaultMessage();
                     throw new Exception400(errMsg);
                 }
             }

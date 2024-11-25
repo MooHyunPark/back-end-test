@@ -21,15 +21,14 @@ public class UserController {
 
     // 유저 추가
     @PostMapping("/users")
-    public UserResponse.SaveUserIdDTO saveUser(@Valid @RequestBody User user, Errors errors) {
-        return userService.saveUser(user);
+    public UserResponse.SaveUserIdDTO saveUser(@Valid @RequestBody UserRequest.SaveUserDTO saveUserDTO, Errors errors) {
+        return userService.saveUser(saveUserDTO);
     }
 
     // 유저 수정
     @PutMapping("/users/{id}")
-    public UserResponse.UpdateUserDTO update(@Valid @RequestBody User user, Errors errors, @PathVariable("id") Integer id) {
-
-        return userService.updateUser(user, id);
+    public UserResponse.UpdateUserDTO update(@Valid @RequestBody UserRequest.UpdateUserDTO updateUserDTO, Errors errors, @PathVariable("id") Integer id) {
+        return userService.updateUser(updateUserDTO, id);
     }
 
 }
