@@ -1,5 +1,6 @@
 package co.kr.metacoding.backendtest.user;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -12,28 +13,21 @@ public class UserController {
 
     private final UserService userService;
 
-//    @GetMapping("/users")
-//    public Resp<?> findUser() {
-//        List<> boardList = boardService.게시글목록보기();
-//        User user = new User();
-//        user.setId(1);
-//        user.setName("test");
-//
-//        return Resp.ok(user);
-//    }
-
+    // 유저 조회
     @GetMapping("/users/{id}")
     public UserResponse.UserDetailDTO selectUser(@PathVariable("id") Integer id) {
         return userService.selectUser(id);
     }
 
+    // 유저 추가
     @PostMapping("/users")
-    public UserResponse.SaveUserIdDTO saveUser(@RequestBody User user, Errors errors) {
+    public UserResponse.SaveUserIdDTO saveUser(@Valid @RequestBody User user, Errors errors) {
         return userService.saveUser(user);
     }
 
+    // 유저 수정
     @PutMapping("/users/{id}")
-    public UserResponse.UpdateUserDTO update(@RequestBody User user, Errors errors, @PathVariable("id") Integer id) {
+    public UserResponse.UpdateUserDTO update(@Valid @RequestBody User user, Errors errors, @PathVariable("id") Integer id) {
 
         return userService.updateUser(user, id);
     }

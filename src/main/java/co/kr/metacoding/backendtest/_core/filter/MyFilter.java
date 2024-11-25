@@ -25,7 +25,7 @@ public class MyFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         String requestURL = httpRequest.getRequestURL().toString();
-        System.out.println(requestURL);
+
         if (SPECIAL_CHARACTER_PATTERN.matcher(requestURL).find()) {
             // 특수문자가 포함된 경우 응답 스트림을 통해 직접 오류 메시지 전송
             httpResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
